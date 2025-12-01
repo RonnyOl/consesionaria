@@ -1,11 +1,40 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Funnel_Display, Sansation, Manrope, League_Gothic, Special_Gothic_Expanded_One } from "next/font/google";
 import "./globals.css";
+import Navbar from "../components/navbar";
+import Footer from "../components/footer";
 
+const special = Special_Gothic_Expanded_One({
+  variable: "--font-special",
+  weight: ["400"],
+  subsets: ["latin"],
+})
+
+const league = League_Gothic({
+  variable: "--font-league",
+  weight: ["400"],
+  subsets: ["latin"],
+})
+
+
+const manrope = Manrope({
+  variable: "--font-manrope",
+  weight: ["400", "700"],
+  subsets: ["latin"],
+})
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
 });
+const sansation = Sansation({
+  variable: "--font-sansation",
+  weight: ["400", "700"],
+  subsets: ["latin"],
+})
+const funnelDisplay = Funnel_Display({
+  variable: "--font-funnel-display",
+  subsets: ["latin"],
+})
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
@@ -25,9 +54,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${funnelDisplay.variable} ${sansation.variable} ${manrope.variable} ${league.variable} ${special.variable} antialiased`}
       >
+        <Navbar />
         {children}
+        <Footer />
       </body>
     </html>
   );

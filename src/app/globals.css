@@ -1,8 +1,12 @@
 @import "tailwindcss";
 
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --main: #C8A34A;
+  --secondary: #F6F1E9;
+  --third: #f0eee8;
 }
 
 @theme inline {
@@ -11,16 +15,230 @@
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
-
+/* 
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
   }
-}
+} */
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+.main-section{
+  background-image: url("https://i.imgur.com/5OqJafO.png");
+}
+
+.bg-banner {
+  background-image: url("https://i.imgur.com/ieXc5jp.png");
+}
+
+.navbar_main {
+border-radius: 0 0 5rem 5rem;
+  height: 6rem;
+  width: 100%;
+  color: var(--main);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover moderno */
+.navlink {
+  cursor: pointer;
+  position: relative;
+  transition: color 0.3s ease;
+  text-shadow: 0px 0px 10px #ffffff60;
+}
+
+.navlink::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  width: 0%;
+  height: 2px;
+  background-color: var(--main);
+  transition: width 0.3s ease;
+}
+
+.navlink:hover::after {
+  width: 100%;
+}
+.navbar-gradient-border {
+  position: relative;
+  overflow: hidden; /* CLAVE para que el redondeado afecte al contenido real */
+  border-radius: 0 0 1rem 1rem; /* tu redondeado */
+}
+
+/* BORDE DORADO CON DESVANECIDO AL CENTRO */
+.navbar-gradient-border::before {
+  content: "";
+  position: absolute;
+  left: -1px;
+  right: -1px;
+  bottom: -1px;
+  width: 100%;
+  height: 4px;
+  pointer-events: none;
+  z-index: 5;
+  background: linear-gradient(
+    90deg,
+    #ffbd42,
+    #b07f23,
+    transparent 40%,
+    transparent 60%,
+    #b07f23,
+    #ffbd42
+  );
+}
+
+
+
+.btn-ig {
+  padding: 10px 20px;
+  text-transform: uppercase;
+  border-radius: 8px;
+  font-size: 17px;
+  font-weight: 500;
+  color: #00000080;
+  text-shadow: none;
+  background: transparent;
+  cursor: pointer;
+  box-shadow: transparent;
+  border: 1px solid #00000080;  
+  transition: 0.5s ease;
+  user-select: none;
+}
+
+.btn-ig:hover,
+.btn-ig:focus {
+  color: #ffffff;
+  background: #C8A34A;
+  border: 1px solid #C8A34A;
+  text-shadow: 0 0 5px #ffffff, 0 0 10px #ffffff, 0 0 20px #ffffff;
+  box-shadow:
+    0 0 23px #C8A34A;
+}
+
+.btn-banner {
+  padding: 10px 20px;
+  text-transform: uppercase;
+  border-radius: 8px;
+  font-size: 17px;
+  font-weight: 500;
+  color: #ffffff80;
+  text-shadow: none;
+  background: transparent;
+  cursor: pointer;
+  box-shadow: transparent;
+  border: 1px solid #ffffff80;
+  transition: 0.5s ease;
+  user-select: none;
+}
+
+.btn-banner:hover,
+.btn-banner:focus {
+  color: #ffffff;
+  background: #C8A34A;
+  border: 1px solid #C8A34A;
+  text-shadow: 0 0 5px #ffffff, 0 0 10px #ffffff, 0 0 20px #ffffff;
+  box-shadow:
+    0 0 23px #C8A34A;
+}
+@keyframes marquee {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+@keyframes card-enter {
+    0% {
+        opacity: 0;
+        transform: translateY(24px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-card-enter {
+    animation: card-enter 0.8s ease-out forwards;
+}
+
+.animate-marquee {
+    animation: marquee 14s linear infinite;
+}
+
+.footer {
+  background-color: var(--secondary);
+}
+
+.font-funnel {
+  font-family: var(--font-funnel-display);
+}
+
+.font-league {
+  font-family: var(--font-league)
+}
+
+.font-sansation {
+  font-family: var(--font-sansation);
+}
+
+.font-manrope {
+  font-family: var(--font-manrope);
+}
+
+.font-special {
+  font-family:var(--font-special);
+}
+
+/**Info item**/
+
+.info-item {
+    @apply flex items-center justify-between text-black;
+}
+
+.info-item h2 {
+    @apply text-3xl font-bold;
+}
+
+.info-item p {
+    @apply text-2xl;
+}
+
+/*filtros*/
+
+.slider-range {
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background: none;
+    -webkit-appearance: none;
+}
+
+/* Thumb */
+.slider-range::-webkit-slider-thumb {
+    pointer-events: all;
+    width: 18px;
+    height: 18px;
+    background: #facc15;
+    border-radius: 50%;
+    cursor: pointer;
+    -webkit-appearance: none;
+}
+
+
+
+/* Línea decorativa solo para el primer item */
+.info-item {
+    border-bottom: 4px solid transparent;
+    background-image: linear-gradient(to right, transparent, var(--main), transparent);
+    background-size: 100% 3px;
+    background-repeat: no-repeat;
+    background-position: bottom;
+    padding-bottom: 5px;
 }
